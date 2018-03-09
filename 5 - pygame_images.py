@@ -12,12 +12,17 @@ pygame.init()  # start pygame
 # create a display screen: 400x400 pixels
 screen = pygame.display.set_mode((400, 400))
 
-pygame.display.set_caption("Brett's game")
+pygame.display.set_caption("Pygame images")
 
 done = False #we're not done displaying
 
 # draw the background
 screen.fill(WHITE)
+
+ball = pygame.image.load("ball.bmp")
+ballrect = ball.get_rect()
+ballrect.left = 100
+ballrect.top = 100
 
 while not done:
 
@@ -25,15 +30,7 @@ while not done:
         if event.type == pygame.QUIT: #if the user clicks the X
             done = True #now we're done displaying
 
-    # draw a red rectangle
-    pygame.draw.rect(screen, RED, [100, 200, 50, 80], 0)
-    pygame.draw.circle(screen, GREEN, [100,100], 100, 0)
-
-    point_list = []
-    point_list.append([300,10])
-    point_list.append([300, 70])
-    point_list.append([375, 70])
-    pygame.draw.polygon(screen, BLUE, point_list)
+    screen.blit(ball, ballrect)
 
 
     # update
